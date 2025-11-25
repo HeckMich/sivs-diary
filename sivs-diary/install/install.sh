@@ -71,10 +71,6 @@ source  /home/ubuntu/venv/bin/activate
 python3 create_db.py
 deactivate
 
-#Copy frontend to /var/www/html
-echo "Copying sivs-diary.tar to /var/www/html"
-sudo cp  ../../sivs-diary.tar.xz /var/www/html/
-sudo cp prepare.sh /var/www/html/
 
 #Remove Diary Installation
 systemctl stop sivs-diary_service
