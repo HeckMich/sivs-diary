@@ -1,6 +1,6 @@
 #!/bin/sh
 SERVICE_NAME=sivs-diary_service
-GUNICORN_CMD="/home/ubuntu/venv/bin/gunicorn -w 4 -b 0.0.0.0:8000 --chdir /home/ubuntu/sivs/sivs-diary/application/ app:app"
+GUNICORN_CMD="/home/ubuntu/venv/bin/gunicorn -w 4 -b 0.0.0.0:8000 --chdir /home/ubuntu/sivs-diary/sivs-diary/application/ app:app"
 PID_PATH_NAME=/tmp/sivs-diary_service-pid
 
 case $1 in
