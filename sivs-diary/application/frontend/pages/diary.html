@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Tagebuch</title>
+
+    <!-- Verweis auf das externe JavaScript-Datei 'main.js' -->
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+
+    <!-- Verweis auf das Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+
+    <!-- Header-Bereich -->
+    <div id="header-area" class="row justify-content-center">
+        <div class="col">
+            <div class="row justify-content-between">
+                <div class="col-2"></div>
+
+                <!-- Anzeige des Benutzernamens aus den URL-Parametern -->
+                <h2 class="mb-4">Tagebuch von
+                    <script>
+                        const par = new URLSearchParams(window.location.search);
+                        document.write(par.get('username'));</script>
+                </h2>
+
+                <div class="col-2">
+                    <!-- Abmelden-Button, der zur Startseite führt -->
+                    <a href="/">
+                        <button class="btn btn-primary">Abmelden</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bereich für das Hinzufügen von Tagebucheinträgen -->
+    <div id="posting-area" class="row">
+        <div class="col">
+            <form id="diary-form">
+                <div class="row">
+                    <div class="col-sm">
+                        <label>Titel</label>
+                        <input type="text" class="form-control" id="entry_title"
+                               placeholder="Titel Tagebucheintrag" autocomplete="off">
+                    </div>
+                    <div class="col-sm">
+                        <label>Datum</label>
+                        <input type="date" id="entry_date" name="dateInput" class="form-control w-100">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <label>Tagebuch Eintrag</label>
+                        <textarea id="entry_content" rows="4" class="w-100"
+                                  placeholder="Was ist heute passiert?" autocomplete="off"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <!-- Button zum Posten von Tagebucheinträgen -->
+                        <button id="post-button" class="btn btn-primary">Posten</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Bereich für die Anzeige von Tagebucheinträgen -->
+    <div class="row">
+        <div class="col">
+            <h2>Tagebucheinträge (Gefilter nach:
+                <span id="searchparameter">{{ search_parameter | safe }}</span>)
+            </h2>
+        </div>
+    </div>
+
+    <!-- Bereich für die Suche -->
+    <div class="row align-items-end">
+        <div class="col">
+            <label for="search">Suche</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="search" placeholder="Suche"
+                       value="{{ search_parameter or '' }}">
+
+                <button class="btn btn-outline-secondary" type="button" id="btn-clear">
+                    &times;
+                </button>
+            </div>
+        </div>
+        <div class="col-auto">
+            <button id="search-button" class="btn btn-primary">
+                Suchen
+            </button>
+        </div>
+    </div>
+
+
+    <div id="diary-area" class="row">
+        <div class="col">
+            <div id="diary-entries" class="container">
+                <!-- Hier werden die Tagebucheinträge dynamisch eingefügt -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Verweis auf das externe JavaScript-Datei 'diary.js' -->
+<script src="{{ url_for('static', filename='scripts/diary.js') }}"></script>
+
+<!-- Verweis auf externe JavaScript-Bibliotheken (jQuery, Popper.js, Bootstrap) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

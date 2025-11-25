@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Account erstellen</title>
+    <!-- Füge das Bootstrap CSS-Framework hinzu -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Füge dein eigenes JavaScript-Datei für das Formular hinzu -->
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Überschrift für die Account-Erstellung -->
+                <h2 class="mb-4">Account erstellen</h2>
+
+                <!-- Formular für die Account-Erstellung -->
+                <form id="createAccountForm">
+                    <!-- Eingabefeld für den neuen Benutzernamen -->
+                    <div class="form-group">
+                        <label>Neuer Benutzername</label>
+                        <input type="text" class="form-control" id="username" placeholder="Neuen Benutzernamen eingeben">
+                    </div>
+
+                    <!-- Eingabefeld für das neue Passwort -->
+                    <div class="form-group">
+                        <label>Neues Passwort</label>
+                        <input type="text" class="form-control" id="password" placeholder="Neues Passwort eingeben">
+                    </div>
+
+                    <!-- Eingabefeld für die Geheimfrage -->
+                    <div class="form-group">
+                        <label>Geheimfrage (benötigt für Passwortwiederherstellung)</label>
+                        <input type="text" class="form-control" id="secret_question" placeholder="Deine Geheimfrage...">
+                    </div>
+
+                    <!-- Eingabefeld für die Antwort auf die Geheimfrage -->
+                    <div class="form-group">
+                        <label>Antwort auf Geheimfrage (benötigt für Passwortwiederherstellung)</label>
+                        <input type="text" class="form-control" id="secret_answer" placeholder="Deine geheime Antwort...">
+                    </div>
+
+                    <!-- Button zum Erstellen des Accounts -->
+                    <button type="submit" class="btn btn-primary">Account erstellen</button>
+                </form>
+
+                <hr> <!-- Horizontale Linie zur Trennung -->
+
+                <!-- Text für Benutzer mit bereits vorhandenem Account -->
+                <p class="mt-4">Bereits einen Account?</p>
+
+                <!-- Link zum Einloggen -->
+                <a href="/" class="btn btn-outline-primary">Einloggen</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Füge dein eigenes JavaScript-Datei für die Account-Erstellung hinzu -->
+    <script src="{{ url_for('static', filename='scripts/create_account.js') }}"></script>
+
+    <!-- Füge jQuery, Popper.js und Bootstrap JavaScript-Dateien hinzu -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
