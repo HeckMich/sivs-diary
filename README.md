@@ -30,3 +30,96 @@ sudo ./install.sh
 2. Run `sudo docker compose --env-file ../.env up -d`
 3. Setup Python environment and install dependencies from "requirements.txt"
 4. Run `python3 create_db.py`
+
+```mermaid
+graph LR
+    %% Styles definieren
+    classDef file fill:#fff,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef db fill:#fff,stroke:#333,stroke-width:1px;
+
+    %% --- Backend / Application ---
+    subgraph app_folder ["/application"]
+        direction TB
+        AppPy[app.py]:::file
+    end
+
+    %% --- Backend / Source ---
+    subgraph src_folder ["/src"]
+        direction TB
+        
+        subgraph api_folder ["/api/"]
+            UserMgmt[usermanagement.py]:::file
+            DiaryPy[diary.py]:::file
+        end
+        
+        subgraph support_folder ["/support/"]
+            DBHandler[db_handler.py]:::file
+        end
+        
+        subgraph pages_py_folder ["/pages/"]
+            ViewPy[view.py]:::file
+        end
+    end
+
+    %% --- Database ---
+    Postgres[(PostgresDB)]:::db
+
+    %% --- Frontend ---
+    subgraph frontend_folder ["/frontend"]
+        direction TB
+        
+        subgraph pages_html_folder ["/pages/"]
+            IndexHtml[index.html]:::file
+            CreateAccHtml[create_account.html]:::file
+            DiaryHtml[diary.html]:::file
+        end
+        
+        subgraph static_folder ["/static/"]
+            MainJs[main.js]:::file
+            DiaryJs[diary.js]:::file
+            IndexJs[index.js]:::file
+            CreateAccJs[create_account.js]:::file
+        end
+    end
+
+    %% --- Beziehungen / Links ---
+
+    %% Register Links (App -> Modules)
+    AppPy -- register --> UserMgmt
+    AppPy -- register --> DiaryPy
+    AppPy -- register --> ViewPy
+
+    %% Init Links (API -> DB Handler)
+    UserMgmt -- init --> DBHandler
+    DiaryPy -- init --> DBHandler
+
+    %% Database Link
+    DBHandler <-- SQL --> Postgres
+
+    %% View Serving Links
+    ViewPy -- serves --> IndexHtml
+    ViewPy -- serves --> CreateAccHtml
+    ViewPy -- serves --> DiaryHtml
+
+    %% Frontend Assets Links (HTML -> JS)
+    %% Index HTML uses
+    IndexHtml -- uses --> MainJs
+    IndexHtml -- uses --> IndexJs
+
+    %% Create Account HTML uses
+    CreateAccHtml -- uses --> MainJs
+    CreateAccHtml -- uses --> CreateAccJs
+
+    %% Diary HTML uses
+    DiaryHtml -- uses --> MainJs
+    DiaryHtml -- uses --> DiaryJs
+
+    %% Link Styles (Optional: Farben anpassen ähnlich dem Bild)
+    linkStyle 0,1,2 stroke:#7fcec5,stroke-width:2px;
+    linkStyle 3,4 stroke:#f4d03f,stroke-width:2px;
+    linkStyle 5 stroke:#5dade2,stroke-width:2px;
+    linkStyle 6,7,8 stroke:#a9cce3,stroke-width:2px;
+    linkStyle 9,10 stroke:#f1948a,stroke-width:1px;
+    linkStyle 11,12 stroke:#d7bde2,stroke-width:1px;
+    linkStyle 13,14 stroke:#a9dfbf,stroke-width:1px;
+```
