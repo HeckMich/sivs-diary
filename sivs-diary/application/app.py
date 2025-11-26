@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 import sys
 #Setzen von ENV-Pfaden
-folder_path = '/home/ubuntu/sivs/sivs-diary/application/'
+folder_path = '/home/ubuntu/sivs-diary/sivs-diary/application/'
 if folder_path not in sys.path:
     sys.path.append(folder_path)
 

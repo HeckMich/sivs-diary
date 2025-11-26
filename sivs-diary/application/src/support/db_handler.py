@@ -4,7 +4,7 @@ from dotenv import load_dotenv, find_dotenv
 import psycopg2
 from flask import jsonify
 from dotenv import load_dotenv
-
+load_dotenv(find_dotenv())
 class DBHandler():
     """
     Die DBHandler Klasse ist das Herz der Anwendung, diese kommuniziert mit der Datenbank und interpretiert Parameter.

@@ -81,8 +81,6 @@ systemctl daemon-reload
 systemctl reset-failed
 
 #Install Diary Service
-sudo cp -r ./services/sivs-diary_service.sh /usr/local/bin
-sudo chmod +x /usr/local/bin/sivs-diary_service.sh
 sudo cp -r ./services/sivs-diary_service.service /etc/systemd/system/
 
 #Start Diary Service
