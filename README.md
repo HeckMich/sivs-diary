@@ -33,9 +33,20 @@ sudo ./install.sh
 
 ```mermaid
 graph LR
-    %% Styles definieren
-    classDef file fill:#fff,stroke:#333,stroke-width:1px,rx:5,ry:5;
-    classDef db fill:#fff,stroke:#333,stroke-width:1px;
+    %% --- STYLING DEFINITONEN ---
+    classDef file fill:#ffffff,stroke:#4a69bd,stroke-width:2px,rx:10,ry:10,color:#2c3e50,font-family:sans-serif;
+    classDef db fill:#fff3e0,stroke:#e67e22,stroke-width:3px,rx:5,ry:5,color:#d35400,font-family:sans-serif;
+    style app_folder fill:#f4f7f6,stroke:#bdc3c7,stroke-width:1px,color:#7f8c8d
+    style src_folder fill:#f4f7f6,stroke:#bdc3c7,stroke-width:1px,color:#7f8c8d
+    style frontend_folder fill:#f4f7f6,stroke:#bdc3c7,stroke-width:1px,color:#7f8c8d
+    style api_folder fill:#ffffff,stroke:#ecf0f1,color:#95a5a6
+    style support_folder fill:#ffffff,stroke:#ecf0f1,color:#95a5a6
+    style pages_py_folder fill:#ffffff,stroke:#ecf0f1,color:#95a5a6
+    style pages_html_folder fill:#ffffff,stroke:#ecf0f1,color:#95a5a6
+    style static_folder fill:#ffffff,stroke:#ecf0f1,color:#95a5a6
+
+
+    %% --- STRUKTUR ---
 
     %% --- Backend / Application ---
     subgraph app_folder ["/application"]
@@ -82,7 +93,7 @@ graph LR
         end
     end
 
-    %% --- Beziehungen / Links ---
+    %% --- BEZIEHUNGEN / LINKS ---
 
     %% Register Links (App -> Modules)
     AppPy -- register --> UserMgmt
@@ -102,24 +113,16 @@ graph LR
     ViewPy -- serves --> DiaryHtml
 
     %% Frontend Assets Links (HTML -> JS)
-    %% Index HTML uses
     IndexHtml -- uses --> MainJs
     IndexHtml -- uses --> IndexJs
-
-    %% Create Account HTML uses
     CreateAccHtml -- uses --> MainJs
     CreateAccHtml -- uses --> CreateAccJs
-
-    %% Diary HTML uses
     DiaryHtml -- uses --> MainJs
     DiaryHtml -- uses --> DiaryJs
 
-    %% Link Styles (Optional: Farben anpassen ähnlich dem Bild)
-    linkStyle 0,1,2 stroke:#7fcec5,stroke-width:2px;
-    linkStyle 3,4 stroke:#f4d03f,stroke-width:2px;
-    linkStyle 5 stroke:#5dade2,stroke-width:2px;
-    linkStyle 6,7,8 stroke:#a9cce3,stroke-width:2px;
-    linkStyle 9,10 stroke:#f1948a,stroke-width:1px;
-    linkStyle 11,12 stroke:#d7bde2,stroke-width:1px;
-    linkStyle 13,14 stroke:#a9dfbf,stroke-width:1px;
+    %% --- LINK STYLING ---
+    linkStyle 0,1,2,3,4 stroke:#6c5ce7,stroke-width:2px,fill:none;
+    linkStyle 5 stroke:#e67e22,stroke-width:3px,fill:none;
+    linkStyle 6,7,8 stroke:#00cec9,stroke-width:2px,fill:none;
+    linkStyle 9,10,11,12,13,14 stroke:#e84393,stroke-width:2px,fill:none;
 ```
