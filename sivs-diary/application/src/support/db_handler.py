@@ -47,17 +47,15 @@ class DBHandler():
     def execute_query(self,query, values=(),fetchone=False,fetch=True):
         """
         Fügt ein Datenbankquery durch.
-        :param query:
-        :param values:
+        :param query: Query "SELECT STATEMENT"
+        :param values: Query-Parameter falls paramaterized Queries verwendet werden
         :param fetchone: Gibt es eine oder mehrere Rückgabewerte
         :param fetch: Gibt es einen Rückgabewer
         :return:
         """
         try:
-            # Falls paramter (is not empty)
             if values:
                 self.cursor.execute(query, values)
-            # Falls keien parameter
             else:
                 self.cursor.execute(query)
             self.connection.commit()

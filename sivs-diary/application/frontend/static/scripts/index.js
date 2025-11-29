@@ -31,8 +31,6 @@ form.addEventListener('submit', async function (event) {
         // Leitet den Benutzer zur Homeseite weiter, wenn die Anmeldung erfolgreich war
         window.location.href = response.homelink;
     } catch (error) {
-        // Tritt ein Fehler während der Anmeldung auf
-
         // ID für das Warnungselement erstellen
         const alertId = 'login-alert';
 
@@ -48,7 +46,7 @@ form.addEventListener('submit', async function (event) {
         // Erstellt eine Fehlermeldung
         const fehlermeldung = "Benutzeranmeldung nicht möglich. Passwort und/oder Benutzername falsch!";
 
-        // Erstellt ein Warnungselement und fügt es zum Passwortfeld hinzu
+        // Erstellt ein Warnungselement
         const warnungsfeld = document.createElement('div');
         warnungsfeld.innerHTML = fehlermeldung;
         warnungsfeld.id = alertId;

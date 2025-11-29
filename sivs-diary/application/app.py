@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask
 from flask_cors import CORS
 import sys
@@ -10,6 +12,10 @@ from src.api.diary import diary_blueprint
 from src.api.usermanagement import user_management_blueprint
 from src.pages.views import views_blueprint
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 
 app = Flask(__name__,template_folder="./frontend/",static_folder="./frontend/static/")
 #Setzt die CORS Header auf * (Übungszwecke!)
