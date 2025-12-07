@@ -20,11 +20,18 @@
                 <div class="col-2"></div>
 
                 <!-- Anzeige des Benutzernamens aus den URL-Parametern -->
-                <h2 class="mb-4">Tagebuch von
-                    <script>
-                        const par = new URLSearchParams(window.location.search);
-                        document.write(par.get('username'));</script>
+                <h2 class="mb-4">Tagebuch von <span id="username-display"></span></h2>
                 </h2>
+                <script>
+                    const par = new URLSearchParams(window.location.search);
+                    const username = par.get('username');
+                    const displayElement = document.getElementById('username-display');
+                    if (displayElement) {
+                        // SICHER: textContent verhindert XSS, da es HTML-Tags als reinen Text behandelt
+                        displayElement.textContent = username;
+                    }
+                </script>
+
 
                 <div class="col-2">
                     <!-- Abmelden-Button, der zur Startseite führt -->
@@ -74,7 +81,7 @@
     <div class="row">
         <div class="col">
             <h2>Tagebucheinträge (Suche nach:
-                <span id="searchparameter">{{ search_parameter | safe }}</span>)
+                <span id="searchparameter">{{ search_parameter }}</span>)
             </h2>
         </div>
     </div>
